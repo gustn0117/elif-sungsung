@@ -92,10 +92,13 @@ export default function Footer({ onTabChange }: FooterProps) {
           <p className="text-[12px] text-gray-600">
             &copy; 2025 엘리프 성성호수공원. All rights reserved.
           </p>
-          <p className="text-[11px] text-gray-700 max-w-[600px] text-center md:text-right leading-relaxed">
-            본 제작물에 사용된 이미지 및 내용, 문구 등은 소비자의 이해를 돕기 위해 제작 또는 표기된 것으로
-            실제와 차이가 있으며, 본 제작물상의 설계 내용은 향후 인허가 과정에서 변동될 수 있습니다.
-          </p>
+          <div className="text-right">
+            <p className="text-[11px] text-gray-700 max-w-[600px] text-center md:text-right leading-relaxed">
+              본 제작물에 사용된 이미지 및 내용, 문구 등은 소비자의 이해를 돕기 위해 제작 또는 표기된 것으로
+              실제와 차이가 있으며, 본 제작물상의 설계 내용은 향후 인허가 과정에서 변동될 수 있습니다.
+            </p>
+            <p className="text-[11px] text-gray-700 mt-1">사이트 관리자: 김현주</p>
+          </div>
         </div>
       </div>
     </footer>
