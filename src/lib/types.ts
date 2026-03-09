@@ -6,7 +6,7 @@ export interface Registration {
   phone2: string;
   phone3: string;
   interest_type: string;
-  age: string;
+  birth: string;
   city: string;
   district: string;
   dong: string;
@@ -21,7 +21,7 @@ export interface RegistrationInput {
   phone2: string;
   phone3: string;
   interestType: string;
-  age: string;
+  birth: string;
   city: string;
   district: string;
   dong: string;
@@ -40,7 +40,7 @@ export interface StatsResponse {
   totalRegistrations: number;
   todayRegistrations: number;
   byInterestType: { type: string; count: number }[];
-  byAge: { age: string; count: number }[];
+  byBirth: { birth: string; count: number }[];
   byCity: { city: string; count: number }[];
   recentTrend: { date: string; count: number }[];
 }

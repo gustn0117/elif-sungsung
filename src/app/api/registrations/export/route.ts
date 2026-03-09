@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const search = searchParams.get("search") || "";
     const interestType = searchParams.get("interestType") || "";
-    const age = searchParams.get("age") || "";
+    const birth = searchParams.get("birth") || "";
     const city = searchParams.get("city") || "";
     const dateFrom = searchParams.get("dateFrom") || "";
     const dateTo = searchParams.get("dateTo") || "";
@@ -32,9 +32,9 @@ export async function GET(request: NextRequest) {
       conditions.push("interest_type = ?");
       params.push(interestType);
     }
-    if (age) {
-      conditions.push("age = ?");
-      params.push(age);
+    if (birth) {
+      conditions.push("birth = ?");
+      params.push(birth);
     }
     if (city) {
       conditions.push("city = ?");
@@ -61,10 +61,10 @@ export async function GET(request: NextRequest) {
 
     // BOM for Korean Excel compatibility
     const BOM = "\uFEFF";
-    const header = "No.,성명,연락처,관심유형,연령대,시/도,시/구/군,읍/면/동,등록일시";
+    const header = "No.,성명,연락처,관심유형,생년월일,시/도,시/구/군,읍/면/동,등록일시";
     const csvRows = rows.map(
       (r, i) =>
-        `${i + 1},"${r.name}","${r.phone}","${r.interest_type}","${r.age}","${r.city}","${r.district}","${r.dong}","${r.created_at}"`
+        `${i + 1},"${r.name}","${r.phone}","${r.interest_type}","${r.birth}","${r.city}","${r.district}","${r.dong}","${r.created_at}"`
     );
     const csv = BOM + header + "\n" + csvRows.join("\n");
 

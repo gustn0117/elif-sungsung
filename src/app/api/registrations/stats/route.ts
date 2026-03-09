@@ -34,11 +34,11 @@ export async function GET(request: NextRequest) {
       )
       .all() as { type: string; count: number }[];
 
-    const byAge = db
+    const byBirth = db
       .prepare(
-        "SELECT age, COUNT(*) as count FROM registrations WHERE age != '' GROUP BY age ORDER BY age"
+        "SELECT birth, COUNT(*) as count FROM registrations WHERE birth != '' GROUP BY birth ORDER BY count DESC"
       )
-      .all() as { age: string; count: number }[];
+      .all() as { birth: string; count: number }[];
 
     const byCity = db
       .prepare(
@@ -58,7 +58,7 @@ export async function GET(request: NextRequest) {
         totalRegistrations,
         todayRegistrations,
         byInterestType,
-        byAge,
+        byBirth,
         byCity,
         recentTrend,
       },

@@ -12,7 +12,7 @@ export default function RegisterSection() {
     phone2: "",
     phone3: "",
     interestType: "",
-    age: "",
+    birth: "",
     city: "",
     district: "",
     dong: "",
@@ -40,6 +40,7 @@ export default function RegisterSection() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
+          birth: form.birth,
           interestType: form.interestType,
           agreed: true,
         }),
@@ -66,7 +67,7 @@ export default function RegisterSection() {
       phone2: "",
       phone3: "",
       interestType: "",
-      age: "",
+      birth: "",
       city: "",
       district: "",
       dong: "",
@@ -140,7 +141,7 @@ export default function RegisterSection() {
 
               <div className="pl-3 space-y-2">
                 <p><span className="text-gray-800 font-medium">(1) 수집하는 개인정보 항목</span><br />
-                  - 수집항목: 이름, 연락처, 관심 유형, 연령대, 주소<br />
+                  - 수집항목: 이름, 연락처, 관심 유형, 생년월일, 주소<br />
                   - 개인정보 수집방법: 관심고객 등록, 이벤트 응모
                 </p>
                 <p><span className="text-gray-800 font-medium">(2) 개인정보의 수집 및 이용 목적</span><br />
@@ -351,27 +352,19 @@ export default function RegisterSection() {
                   </td>
                 </tr>
 
-                {/* 연령대 */}
+                {/* 생년월일 */}
                 <tr className="border-b border-gray-100">
-                  <td className="bg-gray-50/80 px-6 py-5 font-semibold text-gray-700 whitespace-nowrap">연령대</td>
+                  <td className="bg-gray-50/80 px-6 py-5 font-semibold text-gray-700 whitespace-nowrap">생년월일</td>
                   <td className="px-6 py-4">
-                    <div className="flex flex-wrap items-center gap-5">
-                      {["20대", "30대", "40대", "50대", "60대 이상"].map((age) => (
-                        <label key={age} className="flex items-center gap-2 cursor-pointer group">
-                          <input
-                            type="radio"
-                            name="age"
-                            value={age}
-                            checked={form.age === age}
-                            onChange={(e) => handleChange("age", e.target.value)}
-                            className={radioClass}
-                          />
-                          <span className={`text-[13px] transition-colors ${form.age === age ? "text-elif-green font-medium" : "text-gray-600 group-hover:text-gray-900"}`}>
-                            {age}
-                          </span>
-                        </label>
-                      ))}
-                    </div>
+                    <input
+                      type="text"
+                      maxLength={6}
+                      value={form.birth}
+                      onChange={(e) => handleChange("birth", e.target.value.replace(/\D/g, ""))}
+                      placeholder="예: 850101"
+                      className={inputClass}
+                    />
+                    <p className="text-[11px] text-gray-400 mt-1.5">주민등록번호 앞 6자리를 입력해 주세요</p>
                   </td>
                 </tr>
 

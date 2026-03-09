@@ -26,7 +26,7 @@ export function getDb(): Database.Database {
         phone2        TEXT NOT NULL,
         phone3        TEXT NOT NULL,
         interest_type TEXT DEFAULT '',
-        age           TEXT DEFAULT '',
+        birth         TEXT DEFAULT '',
         city          TEXT DEFAULT '',
         district      TEXT DEFAULT '',
         dong          TEXT DEFAULT '',

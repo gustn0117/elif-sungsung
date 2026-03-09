@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     const phone = `${body.phone1 || "010"}-${body.phone2}-${body.phone3}`;
     const db = getDb();
     const stmt = db.prepare(`
-      INSERT INTO registrations (name, phone, phone1, phone2, phone3, interest_type, age, city, district, dong, agreed)
+      INSERT INTO registrations (name, phone, phone1, phone2, phone3, interest_type, birth, city, district, dong, agreed)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `);
     const result = stmt.run(
@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
       body.phone2,
       body.phone3,
       body.interestType || "",
-      body.age || "",
+      body.birth || "",
       body.city || "",
       body.district || "",
       body.dong || "",
@@ -64,7 +64,7 @@ export async function GET(request: NextRequest) {
     const pageSize = Math.min(100, Math.max(1, parseInt(searchParams.get("pageSize") || "20")));
     const search = searchParams.get("search") || "";
     const interestType = searchParams.get("interestType") || "";
-    const age = searchParams.get("age") || "";
+    const birth = searchParams.get("birth") || "";
     const city = searchParams.get("city") || "";
     const sortBy = searchParams.get("sortBy") || "created_at";
     const sortOrder = searchParams.get("sortOrder") === "asc" ? "ASC" : "DESC";
@@ -82,9 +82,9 @@ export async function GET(request: NextRequest) {
       conditions.push("interest_type = ?");
       params.push(interestType);
     }
-    if (age) {
-      conditions.push("age = ?");
-      params.push(age);
+    if (birth) {
+      conditions.push("birth = ?");
+      params.push(birth);
     }
     if (city) {
       conditions.push("city = ?");
@@ -101,7 +101,7 @@ export async function GET(request: NextRequest) {
 
     const whereClause = conditions.length > 0 ? `WHERE ${conditions.join(" AND ")}` : "";
 
-    const allowedSortColumns = ["created_at", "name", "phone", "interest_type", "age", "city"];
+    const allowedSortColumns = ["created_at", "name", "phone", "interest_type", "birth", "city"];
     const safeSortBy = allowedSortColumns.includes(sortBy) ? sortBy : "created_at";
 
     const db = getDb();

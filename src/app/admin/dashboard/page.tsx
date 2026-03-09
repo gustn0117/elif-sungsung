@@ -27,7 +27,7 @@ export default function AdminDashboardPage() {
   const [search, setSearch] = useState("");
   const [searchInput, setSearchInput] = useState("");
   const [filterInterest, setFilterInterest] = useState("");
-  const [filterAge, setFilterAge] = useState("");
+  const [filterBirth, setFilterBirth] = useState("");
   const [filterCity, setFilterCity] = useState("");
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
@@ -63,7 +63,7 @@ export default function AdminDashboardPage() {
     params.set("pageSize", "20");
     if (search) params.set("search", search);
     if (filterInterest) params.set("interestType", filterInterest);
-    if (filterAge) params.set("age", filterAge);
+    if (filterBirth) params.set("birth", filterBirth);
     if (filterCity) params.set("city", filterCity);
     if (dateFrom) params.set("dateFrom", dateFrom);
     if (dateTo) params.set("dateTo", dateTo);
@@ -73,7 +73,7 @@ export default function AdminDashboardPage() {
     fetch(`/api/registrations?${params.toString()}`)
       .then((r) => r.json())
       .then((d) => { if (d.success) setList(d.data); });
-  }, [page, search, filterInterest, filterAge, filterCity, dateFrom, dateTo, sortBy, sortOrder]);
+  }, [page, search, filterInterest, filterBirth, filterCity, dateFrom, dateTo, sortBy, sortOrder]);
 
   useEffect(() => {
     if (authChecked) { loadStats(); loadList(); }
@@ -107,7 +107,7 @@ export default function AdminDashboardPage() {
     const params = new URLSearchParams();
     if (search) params.set("search", search);
     if (filterInterest) params.set("interestType", filterInterest);
-    if (filterAge) params.set("age", filterAge);
+    if (filterBirth) params.set("birth", filterBirth);
     if (filterCity) params.set("city", filterCity);
     if (dateFrom) params.set("dateFrom", dateFrom);
     if (dateTo) params.set("dateTo", dateTo);
@@ -127,7 +127,7 @@ export default function AdminDashboardPage() {
   // 필터 초기화
   const clearFilters = () => {
     setSearch(""); setSearchInput("");
-    setFilterInterest(""); setFilterAge(""); setFilterCity("");
+    setFilterInterest(""); setFilterBirth(""); setFilterCity("");
     setDateFrom(""); setDateTo("");
     setPage(1);
   };
@@ -177,9 +177,9 @@ export default function AdminDashboardPage() {
                 color="amber-500"
               />
               <StatCard
-                label="인기 연령대"
-                value={stats.byAge[0]?.age || "-"}
-                icon="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                label="등록 지역 수"
+                value={String(stats.byCity.length)}
+                icon="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
                 color="purple-500"
               />
             </div>
@@ -199,14 +199,14 @@ export default function AdminDashboardPage() {
                 )}
               </ChartCard>
 
-              {/* 연령대별 */}
-              <ChartCard title="연령대별 분포">
-                {stats.byAge.length === 0 ? (
+              {/* 생년월일별 */}
+              <ChartCard title="생년월일별 분포">
+                {stats.byBirth.length === 0 ? (
                   <p className="text-[13px] text-gray-300 text-center py-6">데이터 없음</p>
                 ) : (
                   <div className="space-y-3">
-                    {stats.byAge.map((item) => (
-                      <BarRow key={item.age} label={item.age} count={item.count} max={maxBarValue(stats.byAge)} color="bg-blue-500" />
+                    {stats.byBirth.slice(0, 10).map((item) => (
+                      <BarRow key={item.birth} label={item.birth} count={item.count} max={maxBarValue(stats.byBirth)} color="bg-blue-500" />
                     ))}
                   </div>
                 )}
@@ -310,18 +310,14 @@ export default function AdminDashboardPage() {
                 <option value="2순위">2순위</option>
               </select>
 
-              <select
-                value={filterAge}
-                onChange={(e) => { setFilterAge(e.target.value); setPage(1); }}
-                className="px-3 py-2 border border-gray-200 rounded-lg text-[13px] bg-white focus:outline-none focus:ring-2 focus:ring-elif-green/20"
-              >
-                <option value="">연령대 전체</option>
-                <option value="20대">20대</option>
-                <option value="30대">30대</option>
-                <option value="40대">40대</option>
-                <option value="50대">50대</option>
-                <option value="60대 이상">60대 이상</option>
-              </select>
+              <input
+                type="text"
+                maxLength={6}
+                value={filterBirth}
+                onChange={(e) => { setFilterBirth(e.target.value.replace(/\D/g, "")); setPage(1); }}
+                placeholder="생년월일 검색"
+                className="w-[120px] px-3 py-2 border border-gray-200 rounded-lg text-[13px] bg-white focus:outline-none focus:ring-2 focus:ring-elif-green/20"
+              />
 
               <select
                 value={filterCity}
@@ -359,7 +355,7 @@ export default function AdminDashboardPage() {
                   <SortTh label="성명" col="name" current={sortBy} order={sortOrder} onClick={toggleSort} />
                   <SortTh label="연락처" col="phone" current={sortBy} order={sortOrder} onClick={toggleSort} />
                   <SortTh label="관심유형" col="interest_type" current={sortBy} order={sortOrder} onClick={toggleSort} />
-                  <SortTh label="연령대" col="age" current={sortBy} order={sortOrder} onClick={toggleSort} />
+                  <SortTh label="생년월일" col="birth" current={sortBy} order={sortOrder} onClick={toggleSort} />
                   <th className="px-4 py-3 text-left font-semibold text-gray-500">지역</th>
                   <SortTh label="등록일시" col="created_at" current={sortBy} order={sortOrder} onClick={toggleSort} />
                   <th className="px-4 py-3 text-center font-semibold text-gray-500 w-[120px]">관리</th>
@@ -383,7 +379,7 @@ export default function AdminDashboardPage() {
                           </span>
                         ) : <span className="text-gray-300">-</span>}
                       </td>
-                      <td className="px-4 py-3 text-gray-600">{row.age || <span className="text-gray-300">-</span>}</td>
+                      <td className="px-4 py-3 text-gray-600">{row.birth || <span className="text-gray-300">-</span>}</td>
                       <td className="px-4 py-3 text-gray-600">
                         {[row.city, row.district, row.dong].filter(Boolean).join(" ") || <span className="text-gray-300">-</span>}
                       </td>
@@ -480,7 +476,7 @@ export default function AdminDashboardPage() {
               <DetailRow label="성명" value={detailItem.name} />
               <DetailRow label="연락처" value={detailItem.phone} />
               <DetailRow label="관심유형" value={detailItem.interest_type || "-"} />
-              <DetailRow label="연령대" value={detailItem.age || "-"} />
+              <DetailRow label="생년월일" value={detailItem.birth || "-"} />
               <DetailRow label="시/도" value={detailItem.city || "-"} />
               <DetailRow label="시/구/군" value={detailItem.district || "-"} />
               <DetailRow label="읍/면/동" value={detailItem.dong || "-"} />
