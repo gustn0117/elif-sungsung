@@ -17,7 +17,7 @@ function useInView(threshold = 0.15) {
   return { ref, visible };
 }
 
-export default function HomeSection() {
+export default function HomeSection({ onTabChange }: { onTabChange?: (tabId: string) => void }) {
   const [loaded, setLoaded] = useState(false);
   const [scrollY, setScrollY] = useState(0);
 
@@ -121,7 +121,7 @@ export default function HomeSection() {
                 }`}
               >
                 <button
-                  onClick={() => document.getElementById("register")?.scrollIntoView({ behavior: "smooth" })}
+                  onClick={() => onTabChange?.("register")}
                   className="group flex items-center gap-3 px-8 py-4 bg-elif-lake hover:bg-elif-lake/90 text-white text-[14px] font-semibold tracking-wider transition-all duration-300 hover:gap-5 rounded-full shadow-lg shadow-elif-lake/20"
                 >
                   관심고객 사전등록
