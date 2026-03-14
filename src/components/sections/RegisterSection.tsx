@@ -82,7 +82,7 @@ export default function RegisterSection() {
     "w-4 h-4 text-elif-green focus:ring-elif-green/30 border-gray-300 cursor-pointer";
 
   return (
-    <section className="pt-[80px]">
+    <section id="register" className="pt-[80px]">
       <SectionBanner
         title="관심고객등록"
         subtitle="엘리프 성성호수공원에 관심을 가져주셔서 감사합니다."

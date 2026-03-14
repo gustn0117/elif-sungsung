@@ -120,7 +120,10 @@ export default function HomeSection() {
                   loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
                 }`}
               >
-                <button className="group flex items-center gap-3 px-8 py-4 bg-elif-lake hover:bg-elif-lake/90 text-white text-[14px] font-semibold tracking-wider transition-all duration-300 hover:gap-5 rounded-full shadow-lg shadow-elif-lake/20">
+                <button
+                  onClick={() => document.getElementById("register")?.scrollIntoView({ behavior: "smooth" })}
+                  className="group flex items-center gap-3 px-8 py-4 bg-elif-lake hover:bg-elif-lake/90 text-white text-[14px] font-semibold tracking-wider transition-all duration-300 hover:gap-5 rounded-full shadow-lg shadow-elif-lake/20"
+                >
                   관심고객 사전등록
                   <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
