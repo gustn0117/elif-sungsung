@@ -3,7 +3,7 @@ import { getDb } from "@/lib/db";
 import { verifyToken } from "@/lib/auth";
 import type { RegistrationInput } from "@/lib/types";
 
-// POST — 공개: 관심고객 등록
+// POST — 공개: 방문예약 신청
 export async function POST(request: NextRequest) {
   try {
     const body: RegistrationInput = await request.json();

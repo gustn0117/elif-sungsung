@@ -124,20 +124,20 @@ export default function HomeSection({ onTabChange }: { onTabChange?: (tabId: str
                   onClick={() => onTabChange?.("register")}
                   className="group flex items-center gap-3 px-8 py-4 bg-elif-lake hover:bg-elif-lake/90 text-white text-[14px] font-semibold tracking-wider transition-all duration-300 hover:gap-5 rounded-full shadow-lg shadow-elif-lake/20"
                 >
-                  관심고객 사전등록
+                  방문예약 신청
                   <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </button>
                 <a
-                  href="tel:1844-0981"
+                  href="tel:1844-1680"
                   className="flex items-center gap-2 px-6 py-4 border border-white/30 text-white/80 hover:border-white/60 hover:text-white text-[14px] font-medium tracking-wider transition-all duration-300 rounded-full backdrop-blur-sm bg-white/5"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                       d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
-                  1844-0981
+                  1844-1680
                 </a>
               </div>
             </div>
@@ -157,7 +157,7 @@ export default function HomeSection({ onTabChange }: { onTabChange?: (tabId: str
         {/* Side Info Bar */}
         <div className="absolute right-6 lg:right-12 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-6">
           <div className="w-[1px] h-16 bg-white/20" />
-          <span className="text-white/40 text-[11px] tracking-[2px] writing-vertical drop-shadow-sm">1844-0981</span>
+          <span className="text-white/40 text-[11px] tracking-[2px] writing-vertical drop-shadow-sm">1844-1680</span>
           <div className="w-[1px] h-16 bg-white/20" />
         </div>
       </div>
@@ -172,7 +172,7 @@ export default function HomeSection({ onTabChange }: { onTabChange?: (tabId: str
             { label: "위치", value: "충남 천안시 서북구 일대" },
             { label: "총 세대수", value: "TBD" },
             { label: "타입", value: "TBD" },
-            { label: "분양문의", value: "1844-0981" },
+            { label: "분양문의", value: "1844-1680" },
           ].map((item, i) => (
             <div
               key={i}
@@ -501,14 +501,14 @@ export default function HomeSection({ onTabChange }: { onTabChange?: (tabId: str
             <br className="sm:hidden" /> 자세한 상담을 받아보세요.
           </p>
           <a
-            href="tel:1844-0981"
+            href="tel:1844-1680"
             className="group inline-flex items-center gap-3 px-14 py-5 bg-white text-elif-green text-[22px] font-bold tracking-wider transition-all duration-300 hover:shadow-2xl hover:shadow-white/20 hover:scale-[1.02] rounded-full"
           >
             <svg className="w-6 h-6 group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                 d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
             </svg>
-            1844-0981
+            1844-1680
           </a>
           <div className="mt-10 flex flex-wrap justify-center gap-8 text-white/25 text-[13px]">
             <span>시공 | 계룡건설산업(주)</span>

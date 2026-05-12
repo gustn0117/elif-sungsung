@@ -234,14 +234,14 @@ export default function BusinessSection() {
               </h3>
               <p className="text-white/50 text-[13px] mb-7">자세한 분양 정보와 상담을 도와드리겠습니다.</p>
               <a
-                href="tel:1844-0981"
+                href="tel:1844-1680"
                 className="inline-flex items-center gap-3 px-9 py-3.5 bg-white text-elif-green rounded-full text-[15px] font-bold tracking-wider shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
               >
                 <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                1844-0981
+                1844-1680
               </a>
             </div>
           </div>

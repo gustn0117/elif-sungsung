@@ -64,7 +64,7 @@ export default function Home() {
         <button
           onClick={() => handleTabChange("register")}
           className="w-14 h-14 bg-elif-lake text-white rounded-full shadow-xl flex items-center justify-center hover:bg-elif-lake-light transition-all duration-300 hover:scale-110 breathe"
-          title="관심고객등록"
+          title="방문예약"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
@@ -79,7 +79,7 @@ export default function Home() {
 
       {/* Phone Floating Button (Mobile) */}
       <a
-        href="tel:1844-0981"
+        href="tel:1844-1680"
         className={`fixed bottom-8 left-6 z-40 lg:hidden flex items-center gap-2 px-5 py-3 bg-elif-green text-white rounded-full shadow-xl transition-all duration-500 ${
           showFloatingBtn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
         }`}

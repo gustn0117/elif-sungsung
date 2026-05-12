@@ -12,10 +12,7 @@ export default function RegisterSection() {
     phone2: "",
     phone3: "",
     interestType: "",
-    birth: "",
-    city: "",
-    district: "",
-    dong: "",
+    birth: "", // 방문 희망 일시
   });
 
   const handleChange = (field: string, value: string) => {
@@ -48,7 +45,7 @@ export default function RegisterSection() {
       const data = await res.json();
       if (data.success) {
         handleReset();
-        alert("관심고객 등록이 완료되었습니다.\n담당자가 빠른 시일 내에 연락드리겠습니다.");
+        alert("방문예약 신청이 완료되었습니다.\n담당자가 빠른 시일 내에 연락드리겠습니다.");
       } else {
         alert("등록 중 오류가 발생했습니다. 다시 시도해 주세요.");
       }
@@ -68,9 +65,6 @@ export default function RegisterSection() {
       phone3: "",
       interestType: "",
       birth: "",
-      city: "",
-      district: "",
-      dong: "",
     });
   };
 
@@ -84,7 +78,7 @@ export default function RegisterSection() {
   return (
     <section id="register" className="pt-[80px]">
       <SectionBanner
-        title="관심고객등록"
+        title="방문예약"
         subtitle="엘리프 성성호수공원에 관심을 가져주셔서 감사합니다."
         fallbackGradient="bg-gradient-to-r from-amber-900 via-amber-800 to-amber-700"
         bgImage="/images/banner-register.jpg"
@@ -94,13 +88,13 @@ export default function RegisterSection() {
       <div className="bg-[#FAFAF7]">
         <div className="max-w-[800px] mx-auto px-6 pt-16 pb-6 text-center">
           <p className="text-elif-green text-[13px] font-semibold tracking-[4px] uppercase mb-4">
-            REGISTER
+            RESERVATION
           </p>
           <h2
             className="text-[26px] sm:text-[32px] font-light text-gray-900 leading-snug"
             style={{ fontFamily: "'Noto Serif KR', serif" }}
           >
-            관심고객 <span className="font-bold">사전등록</span>
+            방문예약 <span className="font-bold">신청</span>
           </h2>
           <p className="mt-4 text-[14px] text-gray-500 leading-relaxed">
             아래 양식을 작성하시면 담당자가 빠른 시일 내에 연락드리겠습니다.
@@ -141,8 +135,8 @@ export default function RegisterSection() {
 
               <div className="pl-3 space-y-2">
                 <p><span className="text-gray-800 font-medium">(1) 수집하는 개인정보 항목</span><br />
-                  - 수집항목: 이름, 연락처, 관심 유형, 생년월일, 주소<br />
-                  - 개인정보 수집방법: 관심고객 등록, 이벤트 응모
+                  - 수집항목: 이름, 연락처, 관심 타입, 방문 희망일시<br />
+                  - 개인정보 수집방법: 방문예약 신청, 이벤트 응모
                 </p>
                 <p><span className="text-gray-800 font-medium">(2) 개인정보의 수집 및 이용 목적</span><br />
                   회사는 수집한 개인정보를 다음의 목적으로 이용합니다.<br />
@@ -176,11 +170,11 @@ export default function RegisterSection() {
                     <tbody>
                       <tr className="border-t border-gray-200">
                         <td className="py-2 px-3 border-r border-gray-200">분양대행사</td>
-                        <td className="py-2 px-3">분양 마케팅, 고객 상담 및 관리, 관심고객 DB 관리</td>
+                        <td className="py-2 px-3">분양 마케팅, 고객 상담 및 관리, 방문예약 DB 관리</td>
                       </tr>
                       <tr className="border-t border-gray-200 bg-gray-50/50">
                         <td className="py-2 px-3 border-r border-gray-200">홈페이지 운영업체</td>
-                        <td className="py-2 px-3">홈페이지 운영 및 관리, 온라인 관심고객 등록 관리</td>
+                        <td className="py-2 px-3">홈페이지 운영 및 관리, 온라인 방문예약 관리</td>
                       </tr>
                       <tr className="border-t border-gray-200">
                         <td className="py-2 px-3 border-r border-gray-200">문자 발송업체</td>
@@ -220,7 +214,7 @@ export default function RegisterSection() {
               <div className="pl-3 space-y-1.5">
                 <p>
                   - 담당자: 김현주<br />
-                  - 연락처: 1844-0981<br />
+                  - 연락처: 1844-1680<br />
                   - 고객의 개인정보 관련 문의사항은 위 담당자에게 연락 주시기 바랍니다.
                 </p>
               </div>
@@ -328,12 +322,12 @@ export default function RegisterSection() {
                   </td>
                 </tr>
 
-                {/* 관심유형 */}
+                {/* 관심타입 */}
                 <tr className="border-b border-gray-100">
-                  <td className="bg-gray-50/80 px-6 py-5 font-semibold text-gray-700 whitespace-nowrap">관심유형</td>
+                  <td className="bg-gray-50/80 px-6 py-5 font-semibold text-gray-700 whitespace-nowrap">관심타입</td>
                   <td className="px-6 py-4">
                     <div className="flex flex-wrap items-center gap-5">
-                      {["특별공급", "1순위", "2순위"].map((type) => (
+                      {["74타입", "84타입", "95타입"].map((type) => (
                         <label key={type} className="flex items-center gap-2 cursor-pointer group">
                           <input
                             type="radio"
@@ -352,66 +346,17 @@ export default function RegisterSection() {
                   </td>
                 </tr>
 
-                {/* 생년월일 */}
-                <tr className="border-b border-gray-100">
-                  <td className="bg-gray-50/80 px-6 py-5 font-semibold text-gray-700 whitespace-nowrap">생년월일</td>
+                {/* 방문일자 및 시간 */}
+                <tr>
+                  <td className="bg-gray-50/80 px-6 py-5 font-semibold text-gray-700 whitespace-nowrap">방문일자 및 시간</td>
                   <td className="px-6 py-4">
                     <input
-                      type="text"
-                      maxLength={6}
+                      type="datetime-local"
                       value={form.birth}
-                      onChange={(e) => handleChange("birth", e.target.value.replace(/\D/g, ""))}
-                      placeholder="예: 850101"
+                      onChange={(e) => handleChange("birth", e.target.value)}
                       className={inputClass}
                     />
-                    <p className="text-[11px] text-gray-400 mt-1.5">주민등록번호 앞 6자리를 입력해 주세요</p>
-                  </td>
-                </tr>
-
-                {/* 주소 */}
-                <tr>
-                  <td className="bg-gray-50/80 px-6 py-5 font-semibold text-gray-700 whitespace-nowrap">주소</td>
-                  <td className="px-6 py-4">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <select
-                        value={form.city}
-                        onChange={(e) => handleChange("city", e.target.value)}
-                        className={selectClass}
-                      >
-                        <option value="">시/도 선택</option>
-                        <option value="서울">서울</option>
-                        <option value="경기">경기</option>
-                        <option value="인천">인천</option>
-                        <option value="충남">충남</option>
-                        <option value="충북">충북</option>
-                        <option value="대전">대전</option>
-                        <option value="세종">세종</option>
-                        <option value="강원">강원</option>
-                        <option value="전북">전북</option>
-                        <option value="전남">전남</option>
-                        <option value="경북">경북</option>
-                        <option value="경남">경남</option>
-                        <option value="부산">부산</option>
-                        <option value="대구">대구</option>
-                        <option value="울산">울산</option>
-                        <option value="광주">광주</option>
-                        <option value="제주">제주</option>
-                      </select>
-                      <input
-                        type="text"
-                        value={form.district}
-                        onChange={(e) => handleChange("district", e.target.value)}
-                        placeholder="시/구/군"
-                        className="w-[110px] px-4 py-2.5 border border-gray-200 rounded-lg text-[13px] bg-white focus:outline-none focus:ring-2 focus:ring-elif-green/20 focus:border-elif-green transition-all duration-200"
-                      />
-                      <input
-                        type="text"
-                        value={form.dong}
-                        onChange={(e) => handleChange("dong", e.target.value)}
-                        placeholder="읍/면/동"
-                        className="w-[110px] px-4 py-2.5 border border-gray-200 rounded-lg text-[13px] bg-white focus:outline-none focus:ring-2 focus:ring-elif-green/20 focus:border-elif-green transition-all duration-200"
-                      />
-                    </div>
+                    <p className="text-[11px] text-gray-400 mt-1.5">방문을 희망하시는 날짜와 시간을 선택해 주세요</p>
                   </td>
                 </tr>
               </tbody>
@@ -448,8 +393,8 @@ export default function RegisterSection() {
             </div>
             <div className="text-left">
               <p className="text-[12px] text-gray-400 font-medium">전화 문의</p>
-              <a href="tel:1844-0981" className="text-elif-green font-bold text-[20px] tracking-wider hover:text-elif-green-light transition-colors">
-                1844-0981
+              <a href="tel:1844-1680" className="text-elif-green font-bold text-[20px] tracking-wider hover:text-elif-green-light transition-colors">
+                1844-1680
               </a>
             </div>
           </div>
